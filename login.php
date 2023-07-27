@@ -6,7 +6,7 @@ session_start();
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $user_name  = $_POST['user_name'];
         $password = $_POST['password'];
-        if(!empty($user_name) && !empty($password) && !is_numeric($user_name)){
+        if(!empty($user_name) && !empty($password)){
             $query = "select * from users where user_name = '$user_name' limit 1";
             $result = mysqli_query($con,$query);
             
@@ -18,7 +18,7 @@ session_start();
                     die;    
                 } 
             }
-            echo "wrong username or password";  
+            echo "Wrong username or password";  
             
           
         }
@@ -33,19 +33,23 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Login</h1>
 
-    <form action="" method="post">
-        <input type="text" name="user_name" placeholder="username">
-        <br>
-        <input type="password" name="password" placeholder="password">
-        <br>
-        <input type="submit" value="login">
-        <br>
-        <a href="signup.php">click to Signup</a>
-    </form>
+    <div class = "login">
+        <h1 id="heading">Login</h1>
+
+        <form action="login.php" method="post">
+            <input type="text" name="user_name" placeholder="username">
+            <br>
+            <input type="password" name="password" placeholder="password">
+            <br>
+            <button type="submit" value="login"><a>Login</a></button>
+            <h3 id="login-signup">don't have an account!</h3>
+            <button><a href="signup.php">Signup</a></button>
+        </form>
+    </div>
 
 </body>
 </html>
